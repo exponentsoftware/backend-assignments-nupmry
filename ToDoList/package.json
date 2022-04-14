@@ -1,0 +1,28 @@
+{
+    "name": "backend-assignments-nupmry",
+    "version": "1.0.0",
+    "description": "## TODO List",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/exponentsoftware/backend-assignments-nupmry.git"
+    },
+    "keywords": [],
+    "author": "Anupam Arya",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/exponentsoftware/backend-assignments-nupmry/issues"
+    },
+    "homepage": "https://github.com/exponentsoftware/backend-assignments-nupmry#readme",
+    "dependencies": {
+        "colors": "^1.4.0",
+        "cors": "^2.8.5",
+        "dotenv": "^16.0.0",
+        "express": "^4.17.3",
+        "mongoose": "^6.3.0",
+        "nodemon": "^2.0.15"
+    }
+}

@@ -1,0 +1,148 @@
+{
+	"info": {
+		"_postman_id": "e50308c5-f1eb-4a04-bbdf-c88d57190454",
+		"name": "Assignments",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ToDoList",
+			"item": [
+				{
+					"name": "CreateTask",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"user_name\": \"Anupam\",\n        \"title\": \"To Do List Assignmesnts\",\n        \"complete\": true,\n        \"category\": \"task\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/tasks/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tasks",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllTasks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/tasks",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/tasks/6258a52871aef19dc540a484",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tasks",
+								"6258a52871aef19dc540a484"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"complete\": false\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/tasks/6258a52871aef19dc540a484",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tasks",
+								"6258a52871aef19dc540a484"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/tasks/6258a52871aef19dc540a484",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tasks",
+								"6258a52871aef19dc540a484"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "localhost:3000",
+			"type": "string"
+		}
+	]
+}
