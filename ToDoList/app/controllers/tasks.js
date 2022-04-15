@@ -2,8 +2,20 @@ const Todo = require('../models/ToDo');
 
 const getAll = async (req, res) => {
     // router.route("/").get(getAll);
-    var tasks = await Todo.find();
-    res.json(tasks);
+    const { category, title } = req.query;
+    if (!category && !title) {
+        var tasks = await Todo.find().sort({ date: 1 });
+        res.json(tasks);
+    } else {
+        var taskQuery = await Todo.find({
+            $and: [
+                { category: { $eq: category } },
+                { title: { $eq: title } }
+            ]
+        }).sort({ date: 1 })
+        res.json(taskQuery)
+    }
+
 }
 const getById = async (req, res) => {
     // router.route("/:id").get(getById);
@@ -33,10 +45,20 @@ const updateById = async (req, res) => {
 
     await Todo.findByIdAndUpdate(req.params.id, updatedTask, { new: true });
 }
+
+const markDone = async (req, res) => {
+    // router.route("/mark/:id").put(markDone);
+    var updatedTask = {
+        complete: true
+    }
+
+    await Todo.findByIdAndUpdate(req.params.id, updatedTask, { new: true });
+}
+
 const deleteById = async (req, res) => {
     // router.route("/:id").delete(deleteById);
     var deleted = await Todo.findByIdAndDelete(req.params.id);
     res.json(deleted);
 }
 
-module.exports = { getAll, getById, add, updateById, deleteById }
+module.exports = { getAll, getById, add, updateById, deleteById, markDone }

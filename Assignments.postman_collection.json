@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"user_name\": \"Anupam\",\n        \"title\": \"To Do List Assignmesnts\",\n        \"complete\": true,\n        \"category\": \"task\"\n    }",
+							"raw": "{\n        \"user_name\": \"Anupam\",\n        \"title\": \"Assignment Work\",\n        \"complete\": true,\n        \"category\": \"work\"\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -30,6 +30,96 @@
 							"path": [
 								"tasks",
 								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllTaskswQuery",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/tasks?title=Demo Task&category=task",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "Demo Task"
+								},
+								{
+									"key": "category",
+									"value": "task"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/tasks/6258b1b88521b319adca28c9",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tasks",
+								"6258b1b88521b319adca28c9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"complete\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/tasks/6258b1c88521b319adca28cb",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tasks",
+								"6258b1c88521b319adca28cb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/tasks/6258b1b88521b319adca28c9",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tasks",
+								"6258b1b88521b319adca28c9"
 							]
 						}
 					},
@@ -53,63 +143,19 @@
 					"response": []
 				},
 				{
-					"name": "GetById",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}/tasks/6258a52871aef19dc540a484",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"tasks",
-								"6258a52871aef19dc540a484"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "UpdateById",
+					"name": "MarkDone",
 					"request": {
 						"method": "PUT",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"complete\": false\n    }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "{{URL}}/tasks/6258a52871aef19dc540a484",
+							"raw": "{{URL}}/tasks/mark/6258b1c88521b319adca28cb",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"tasks",
-								"6258a52871aef19dc540a484"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "DeleteById",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}/tasks/6258a52871aef19dc540a484",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"tasks",
-								"6258a52871aef19dc540a484"
+								"mark",
+								"6258b1c88521b319adca28cb"
 							]
 						}
 					},
