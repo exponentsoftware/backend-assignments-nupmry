@@ -41,7 +41,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/tasks?title=Demo Task&category=task",
+							"raw": "{{URL}}/tasks",
 							"host": [
 								"{{URL}}"
 							],
@@ -51,11 +51,13 @@
 							"query": [
 								{
 									"key": "title",
-									"value": "Demo Task"
+									"value": "Demo Task",
+									"disabled": true
 								},
 								{
 									"key": "category",
-									"value": "task"
+									"value": "work",
+									"disabled": true
 								}
 							]
 						}
@@ -120,23 +122,6 @@
 							"path": [
 								"tasks",
 								"6258b1b88521b319adca28c9"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GetAllTasks",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}/tasks",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"tasks"
 							]
 						}
 					},

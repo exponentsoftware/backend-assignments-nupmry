@@ -6,12 +6,25 @@ const getAll = async (req, res) => {
     if (!category && !title) {
         var tasks = await Todo.find().sort({ date: 1 });
         res.json(tasks);
+    }
+    else if (category && !title) {
+        var taskQuery = await Todo.find(
+            { category: { $regex: category, $options: 'i' } }
+        ).sort({ date: 1 })
+        res.json(taskQuery)
+    }
+    else if (!category && title) {
+        var taskQuery = await Todo.find(
+            { title: { $regex: title, $options: 'i' } }
+        ).sort({ date: 1 })
+        res.json(taskQuery)
     } else {
         var taskQuery = await Todo.find({
-            $and: [
-                { category: { $eq: category } },
-                { title: { $eq: title } }
-            ]
+            $and:
+                [
+                    { category: { $regex: category, $options: 'i' } },
+                    { title: { $regex: title, $options: 'i' } }
+                ]
         }).sort({ date: 1 })
         res.json(taskQuery)
     }
@@ -43,16 +56,18 @@ const updateById = async (req, res) => {
         category: req.body.category
     }
 
-    await Todo.findByIdAndUpdate(req.params.id, updatedTask, { new: true });
+    const updated = await Todo.findByIdAndUpdate(req.params.id, updatedTask, { new: true });
+    res.json(updated);
 }
 
 const markDone = async (req, res) => {
     // router.route("/mark/:id").put(markDone);
     var updatedTask = {
-        complete: true
+        complete: !(await Todo.findById(req.params.id)).complete
     }
 
-    await Todo.findByIdAndUpdate(req.params.id, updatedTask, { new: true });
+    const marked = await Todo.findByIdAndUpdate(req.params.id, updatedTask, { new: true });
+    res.json(marked);
 }
 
 const deleteById = async (req, res) => {
