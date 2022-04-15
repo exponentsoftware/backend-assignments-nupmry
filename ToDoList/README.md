@@ -1,24 +1,11 @@
-Backend Assignment
-TODO List with filtering
-
-In the existing APIs that you have created in day 1, add filters to the todo list
-Get all todo list should be able to have additional filters to :
-fetch by category
-search by title
-
-Add capability to sort the data by created_at
-
-Add api to mark Todo as done, can you use an exisiting api to achieve this?
-
-Prefered Technologies
-Environment Framework
-Backend APIs Express Js
-Database MongoDB
-ORM/ODM Mongoose
+-   Modify controllers to only admin to access all tasks.
+-   Modify controllers to only allow logged in users to access his tasks.
 
 Backend Assignment
 TODO List for Users
+
 Add User collection to store below user information:
+
 User name
 email
 phone
@@ -26,11 +13,13 @@ created at
 updated at
 role
 Add validation on phone and email from the Mongoose schema itself with error message handling
+
 Link Todo list with User
 Create api to get TODO list for User
 Create User roles for Admin, App user
 User with Admin role should be able to get all Todos
 User with App user role, should be able to fetch only his Todo list
+
 Prefered Technologies
 Environment Framework
 Backend APIs Express Js

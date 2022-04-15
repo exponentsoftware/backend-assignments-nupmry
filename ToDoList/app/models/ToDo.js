@@ -8,7 +8,7 @@ const todoSchema = new mongoose.Schema({
     // updated at
     // category(work, hobby, task)
 
-    user_name: { type: String, required: true },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
     title: { type: String, required: true },
     complete: { type: Boolean, required: true, default: false },
     category: { type: String, required: true },

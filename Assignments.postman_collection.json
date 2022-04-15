@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "ToDoList",
+			"name": "Tasks",
 			"item": [
 				{
 					"name": "CreateTask",
@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"user_name\": \"Anupam\",\n        \"title\": \"Assignment Work\",\n        \"complete\": true,\n        \"category\": \"work\"\n    }",
+							"raw": "{\n        \"user\": \"6258d92b7bac718291a4ba17\",\n        \"title\": \"Admin Task 2\",\n        \"complete\": false,\n        \"category\": \"work\"\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -37,9 +37,21 @@
 				},
 				{
 					"name": "GetAllTaskswQuery",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": \"6258d92b7bac718291a4ba17\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "{{URL}}/tasks",
 							"host": [
@@ -141,6 +153,140 @@
 								"tasks",
 								"mark",
 								"6258b1c88521b319adca28cb"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "CreateUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n    \"user_name\":\"user2\",\n    \"email\":\"user2@gmail.com\",\n    \"phone\": 1111111111\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllUsers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"6258d8875288e925a3b6f2ff\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users/6258d8875288e925a3b6f2ff",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"6258d8875288e925a3b6f2ff"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUserById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/users/6258d8875288e925a3b6f2ff",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"6258d8875288e925a3b6f2ff"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateUserById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"6258d8875288e925a3b6f2ff\",\n    \"phone\": 9999999999\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users/6258d8875288e925a3b6f2ff",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"6258d8875288e925a3b6f2ff"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\" : \"6258d92b7bac718291a4ba17\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users/6258d9c97bac718291a4ba1b",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"6258d9c97bac718291a4ba1b"
 							]
 						}
 					},

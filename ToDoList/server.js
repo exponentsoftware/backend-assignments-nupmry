@@ -12,6 +12,7 @@ const dbConnection = require('./config/mongo');
 const PORT = process.env.PORT || 3000;
 // - Routes
 const tasksRoute = require('./app/routes/tasks');
+const usersRoute = require('./app/routes/users');
 
 // Imports---------------------------------------------------------------------
 
@@ -28,6 +29,7 @@ app.use(express.json());
 // Routes----------------------------------------------------------------------
 // Endpoints
 app.use('/tasks', tasksRoute);
+app.use('/users', usersRoute);
 
 // Listener--------------------------------------------------------------------
 app.listen(PORT, () => {
