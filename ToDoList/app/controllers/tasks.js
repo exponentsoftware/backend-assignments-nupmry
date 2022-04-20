@@ -9,9 +9,13 @@ const getAll = async (req, res) => {
     // const { category, title } = req.query;
     // if (!category && !title) {
     //     if (requester.role == 'admin') {
-    //         var tasks = await Task.find().sort({ date: 1 })
-    //             .then(response => res.json(response))
-    //             .catch(err => res.json(err));
+    const { page, count } = req.query;
+    const total = await Task.countDocuments({});
+    const totalPages = Math.ceil(total / count);
+    var tasks = await Task.find().limit(count).skip(count * (page - 1))
+        // .sort({ date: 1 })
+        .then(response => res.json(response))
+        .catch(err => res.json(err));
     //     } else {
     //         var tasks = await Task.find({ user: requester._id }).sort({ date: 1 })
     //             .then(response => res.json(response))
