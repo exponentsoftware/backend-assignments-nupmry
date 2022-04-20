@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const todoSchema = new mongoose.Schema({
+const taskSchema = new mongoose.Schema({
     // user name
     // title for todo
     // field to track whether task is complete or not
@@ -15,5 +15,5 @@ const todoSchema = new mongoose.Schema({
 
 }, { timestamps: true });
 
-const ToDo = mongoose.model("ToDo", todoSchema);
-module.exports = ToDo;
+const Task = mongoose.model("Task", taskSchema);
+module.exports = Task;

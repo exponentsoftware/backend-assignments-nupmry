@@ -1,0 +1,8 @@
+.App {
+    min-height: 101vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #3a3845;
+    padding: 0% 5%;
+    margin: -10px;
+}

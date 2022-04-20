@@ -19,12 +19,21 @@
     },
     "homepage": "https://github.com/exponentsoftware/backend-assignments-nupmry#readme",
     "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.20.0",
         "colors": "^1.4.0",
+        "cookie-parser": "^1.4.6",
         "cors": "^2.8.5",
         "dotenv": "^16.0.0",
         "express": "^4.17.3",
+        "express-session": "^1.17.2",
+        "jsonwebtoken": "^8.5.1",
         "mongoose": "^6.3.0",
         "nodemon": "^2.0.15",
+        "passport": "^0.5.2",
+        "passport-jwt": "^4.0.0",
+        "passport-local": "^1.0.0",
+        "passport-local-mongoose": "^7.0.0",
         "validator": "^13.7.0"
     }
 }

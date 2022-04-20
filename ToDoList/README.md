@@ -1,80 +1,22 @@
--   Modify controllers to only admin to access all tasks.
--   Modify controllers to only allow logged in users to access his tasks.
-
 Backend Assignment
-TODO List for Users
 
-Add User collection to store below user information:
-
-User name
-email
-phone
-created at
-updated at
-role
-Add validation on phone and email from the Mongoose schema itself with error message handling
-
-Link Todo list with User
-Create api to get TODO list for User
-Create User roles for Admin, App user
-User with Admin role should be able to get all Todos
-User with App user role, should be able to fetch only his Todo list
-
-Prefered Technologies
-Environment Framework
-Backend APIs Express Js
-Database MongoDB
-ORM/ODM Mongoose
-
-Backend Assignment
 TODO List with Authentication
+
 Use Passport Js and add authentication to your App
+
 Create Register and Sign in APIs and on successful signin use Token based authentication
 Signed in User should only be able to call the routes
+
 Create a basic html page and serve it using express app
 Html page for Register, Sign in and display users Todo list should be created
+
 Prefered Technologies
 Environment Framework
 Backend APIs Express Js
 Database MongoDB
 ORM/ODM Mongoose
 
-Backend Assignment
-TODO List with Pagination
-Add Pagination on all get routes
-Api should be able to take in two fields - page number and no. of records
-Pagination should work with existing features
-Create an API to get number of registered users for the Day
-Create API to get active users for the below:
-for current day
-for a week
-for a month
-Prefered Technologies
-Environment Framework
-Backend APIs Express Js
-Database MongoDB
-ORM/ODM Mongoose
-
-Backend Assignment
-TODO Aggregation
-Create API to get all completed task per Learner
-Add Sorting logic to sort by Users who have completed maximum task
-Add a collection to store views for Task, likes and ratings
-Create one API to get task either by most views, likes and ratings
-Prefered Technologies
-Environment Framework
-Backend APIs Express Js
-Database MongoDB
-ORM/ODM Mongoose
-
-Backend Assignment
-TODO List with Postgres/Sequelize
-Migrate your entire application created in Previous Assignment to use Postgres as DB and Sequelize as ORM
-Prefered Technologies
-Environment Framework
-Backend APIs Express Js
-Database Postgres
-ORM/ODM Sequelize
+---
 
 Backend Assignment
 TODO with comments and Tags
@@ -109,6 +51,45 @@ Users can add Tags, update tags on their own TODO list
 
 Update API for TODO list to send comments and tags
 
+Prefered Technologies
+Environment Framework
+Backend APIs Express Js
+Database Postgres
+ORM/ODM Sequelize
+
+---
+
+Backend Assignment
+TODO List with Pagination
+Add Pagination on all get routes
+Api should be able to take in two fields - page number and no. of records
+Pagination should work with existing features
+Create an API to get number of registered users for the Day
+Create API to get active users for the below:
+for current day
+for a week
+for a month
+Prefered Technologies
+Environment Framework
+Backend APIs Express Js
+Database MongoDB
+ORM/ODM Mongoose
+
+Backend Assignment
+TODO Aggregation
+Create API to get all completed task per Learner
+Add Sorting logic to sort by Users who have completed maximum task
+Add a collection to store views for Task, likes and ratings
+Create one API to get task either by most views, likes and ratings
+Prefered Technologies
+Environment Framework
+Backend APIs Express Js
+Database MongoDB
+ORM/ODM Mongoose
+
+Backend Assignment
+TODO List with Postgres/Sequelize
+Migrate your entire application created in Previous Assignment to use Postgres as DB and Sequelize as ORM
 Prefered Technologies
 Environment Framework
 Backend APIs Express Js

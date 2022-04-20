@@ -1,4 +1,13 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+const passportLocalMongoose = require("passport-local-mongoose")
+
+const Session = new mongoose.Schema({
+    refreshToken: {
+        type: String,
+        default: "",
+    },
+})
 
 const userSchema = new mongoose.Schema({
     // User name
@@ -8,8 +17,8 @@ const userSchema = new mongoose.Schema({
     // updated at
     // role
 
-    user_name: { type: String, required: true },
-    email: {
+    // username: { type: String, required: true },
+    username: {
         type: String,
         trim: true,
         lowercase: true,
@@ -33,9 +42,35 @@ const userSchema = new mongoose.Schema({
             message: "Please enter a valid number"
         }
     },
-    role: { type: String, required: true, default: 'user' },
+    password: { type: String, required: true },
+    refreshToken: {
+        type: [Session],
+    },
+    // role: { type: String, required: true, default: 'user' },
 
 }, { timestamps: true });
+
+userSchema.set("toJSON", {
+    transform: function (doc, ret, options) {
+        delete ret.refreshToken
+        return ret
+    },
+})
+
+userSchema.plugin(passportLocalMongoose)
+
+userSchema.pre('save', async function (next) {
+    try {
+        if (this.isNew) {
+            const salt = await bcrypt.genSalt(10)
+            const hashedPassword = await bcrypt.hash(this.password, salt)
+            this.password = hashedPassword
+        }
+        next()
+    } catch (error) {
+        next(error)
+    }
+})
 
 const User = mongoose.model("User", userSchema);
 module.exports = User;
