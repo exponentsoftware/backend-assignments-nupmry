@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const Task = require('../models/Task');
 const bcrypt = require("bcryptjs")
 const { getToken, COOKIE_OPTIONS, getRefreshToken } = require("../../utils/authenticate");
 const jwt = require("jsonwebtoken")
@@ -26,6 +27,62 @@ const logout = async (req, res) => {
         },
         err => next(err)
     )
+}
+
+const registeredToday = async (req, res) => {
+    const { page, count } = req.query;
+    const total = await User.countDocuments({});
+    const totalPages = Math.ceil(total / count);
+    // var users = await User.find().limit(count).skip(count * (page - 1))
+    User.find({
+        createdAt: {
+            $lt: new Date(),
+            $gte: new Date(new Date().setDate(new Date().getDate() - 1))
+        }
+    })
+        .limit(count)
+        .skip(count * (page - 1))
+        .then((user) => {
+            res.json(user)
+        })
+        .catch(err => {
+            res.status(500).json({ message: err.message })
+        })
+}
+
+const activeToday = async (req, res) => {
+    const { page, count } = req.query;
+    const total = await User.countDocuments({});
+    const totalPages = Math.ceil(total / count);
+    // var users = await User.find().limit(count).skip(count * (page - 1))
+    const users_from_tasks = await Task.aggregate(
+        [
+            { // Stage 1 - filter all tasks modified today
+                $match:
+                {
+                    updatedAt:
+                    {
+                        $lt: new Date(),
+                        $gte: new Date(new Date().setDate(new Date().getDate() - 1))
+                    }
+                }
+            },
+            { // Stage 2 -  users of the filtered tasks
+                $project: { user: 1 }
+            }
+        ]
+        // 6258d8875288e925a3b6f2ff, 6258d92b7bac718291a4ba17
+    )
+        .limit(parseInt(count))
+        .skip(parseInt(count) * (page - 1))
+        .then((users) => {
+            res.status(200).json(users)
+        })
+        .catch(err => {
+            res.status(500).json({ message: err.message })
+        })
+    // console.log(users_from_tasks, typeof (count))
+    // res.end()
 }
 
 const refreshToken = async (req, res) => {
@@ -75,6 +132,8 @@ const refreshToken = async (req, res) => {
         res.send("Unauthorized")
     }
 }
+
+
 
 const login = async (req, res) => {
     // const { email, password } = req.body;
@@ -204,4 +263,4 @@ const register = async (req, res) => {
 //     }
 // }
 
-module.exports = { login, register, refreshToken, logout }
+module.exports = { login, register, refreshToken, logout, registeredToday, activeToday }
