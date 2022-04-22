@@ -12,7 +12,18 @@ const taskSchema = new mongoose.Schema({
     title: { type: String, required: true },
     complete: { type: Boolean, required: true, default: false },
     category: { type: String, required: true },
-
+    comments: {
+        type: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Comment"
+        }],
+    },
+    tags: {
+        type: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Tag"
+        }],
+    }
 }, { timestamps: true });
 
 const Task = mongoose.model("Task", taskSchema);

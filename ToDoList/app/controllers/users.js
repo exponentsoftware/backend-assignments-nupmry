@@ -73,6 +73,7 @@ const activeToday = async (req, res) => {
         ]
         // 6258d8875288e925a3b6f2ff, 6258d92b7bac718291a4ba17
     )
+        .unique("user")
         .limit(parseInt(count))
         .skip(parseInt(count) * (page - 1))
         .then((users) => {
